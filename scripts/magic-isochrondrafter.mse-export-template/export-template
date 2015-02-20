@@ -1,0 +1,27 @@
+﻿mse version: 0.3.8
+short name: Isochron Drafter
+full name: Isochron Drafter Exporter
+position hint: 006
+version: 2015-02-14
+installer group: magic/Export/isochrondrafter
+
+depends on:
+	package: magic.mse-game
+	version: 2009-07-23
+
+game: magic
+file type: *.txt|*.txt|*.*|*.*
+
+# By caeonosphere
+# Written by modifying the Cockatrice export template
+
+script:
+	write_card := {
+		"\n"+card.name
+		+"\n"+card.rarity
+		+"\n"
+		}
+	write_cards := to_text(for each card in sort_list(cards, order_by: {input.card_number}) do write_card())
+	to_string(
+		 set.title+"\n"
+		 +write_cards)
