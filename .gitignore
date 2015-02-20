@@ -1,14 +1,2 @@
-obj/x86/Debug/DesignTimeResolveAssemblyReferences.cache
-*.cache
-obj/x86/Debug/IsochronDrafter.CardWindow.resources
-*.resources
-obj/x86/Debug/IsochronDrafter.csproj.FileListAbsolute.txt
-obj/x86/Debug/IsochronDrafter.exe
-obj/x86/Debug/IsochronDrafter.pdb
-bin/Debug/tcpServer.pdb
-bin/Debug/tcpServer.dll
-bin/Debug/IsochronDrafter.vshost.exe.manifest
-bin/Debug/IsochronDrafter.vshost.exe
-bin/Debug/IsochronDrafter - Copy.exe
-bin/Debug/IsochronDrafter.exe
-bin/Debug/IsochronDrafter.pdb
+bin/*
+obj/*

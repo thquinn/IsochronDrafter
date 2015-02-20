@@ -15,6 +15,9 @@ namespace IsochronDrafter
         {
             InitializeComponent();
             MaximizeBox = false;
+            #if DEBUG
+            textBox1.Text = "isochron.us.to";
+            #endif
         }
 
         // Connect.

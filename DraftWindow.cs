@@ -18,6 +18,7 @@ namespace IsochronDrafter
         private static Dictionary<string, Image> cardImages = new Dictionary<string, Image>();
         public CardWindow cardWindow;
         public DraftClient draftClient;
+        public bool canPick = true;
 
         public DraftWindow()
         {
@@ -62,7 +63,7 @@ namespace IsochronDrafter
         {
             if (cardImages.ContainsKey(cardName))
                 return;
-            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("https://dl.dropboxusercontent.com/u/1377551/IsochronDrafter/" + cardName.Replace(",", "").Replace("’", "") + ".full.jpg");
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(Util.imageDirectory + cardName.Replace(",", "").Replace("’", "") + ".full.jpg");
             HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
             Stream stream = httpWebReponse.GetResponseStream();
             cardImages.Add(cardName, Image.FromStream(stream));
@@ -88,7 +89,11 @@ namespace IsochronDrafter
         }
         public void ClearDraftPicker()
         {
-            draftPicker.Populate(new List<string>());
+            draftPicker.Clear();
+        }
+        public void EnableDraftPicker()
+        {
+            canPick = true;
         }
         public void AddCardToPool(string cardName)
         {
@@ -107,10 +112,15 @@ namespace IsochronDrafter
 
         private void draftPicker1_DoubleClick(object sender, EventArgs e)
         {
+            if (!canPick)
+                return;
             MouseEventArgs me = e as MouseEventArgs;
             int index = draftPicker.GetIndexFromCoor(me.X, me.Y);
             if (index != -1)
+            {
+                canPick = false;
                 draftClient.Pick(index, draftPicker.cardNames[index]);
+            }
         }
 
         // Menu items.

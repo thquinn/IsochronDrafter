@@ -8,6 +8,7 @@ namespace IsochronDrafter
     public class Util
     {
         public static readonly int version = 1;
+        public static string imageDirectory;
         public static Random random = new Random();
 
         public static int[] PickN(int max, int count)

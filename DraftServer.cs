@@ -37,13 +37,25 @@ namespace IsochronDrafter
             ParseText(File.ReadAllText(setFilename));
             serverWindow.PrintLine("Loaded set: " + setName + ".");
 
+            // Get public IP address of server.
+            string url = "http://checkip.dyndns.org";
+            System.Net.WebRequest req = System.Net.WebRequest.Create(url);
+            System.Net.WebResponse resp = req.GetResponse();
+            System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
+            string response = sr.ReadToEnd().Trim();
+            string[] a = response.Split(':');
+            string a2 = a[1].Substring(1);
+            string[] a3 = a2.Split('<');
+            string ip = a3[0];
+
+
             server = new TcpServer();
             server.Port = 10024;
             server.OnConnect += OnConnect;
             server.OnDisconnect += OnDisconnect;
             server.OnDataAvailable += OnDataAvailable;
             server.Open();
-            serverWindow.PrintLine("Launched server on port " + server.Port + ". Accepting connections.");
+            serverWindow.PrintLine("Launched server at " + ip + " on port " + server.Port + ". Accepting connections.");
         }
 
         private void OnConnect(TcpServerConnection connection)
@@ -135,6 +147,7 @@ namespace IsochronDrafter
                     serverWindow.PrintLine("<" + GetAlias(connection) + "> has new alias " + parts[1] + ".");
                     aliases.TryAdd(connection, parts[1]);
                     TrySendMessage(connection, "OK|ALIAS");
+                    TrySendMessage(connection, "IMAGE_DIR|" + Util.imageDirectory);
                     TrySendMessage("USER_CONNECTED|" + parts[1]);
                     if (draftStarted)
                     {
@@ -167,7 +180,7 @@ namespace IsochronDrafter
                 booster.RemoveAt(pickIndex);
                 draftState.boosters.Remove(booster);
                 TrySendMessage(connection, "OK|PICK");
-                serverWindow.PrintLine("<" + draftState.alias + "> picked " + pick + ".");
+                serverWindow.PrintLine("<" + draftState.alias + "> made a pick.");
 
                 // Pass the pack to the next player, if not empty.
                 if (booster.Count > 0)

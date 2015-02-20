@@ -71,6 +71,7 @@ namespace IsochronDrafter
                 else if (parts[1] == "PICK")
                 {
                     draftWindow.ClearDraftPicker();
+                    draftWindow.EnableDraftPicker();
                 }
             }
             else if (parts[0] == "ERROR")
@@ -86,6 +87,11 @@ namespace IsochronDrafter
                 else
                     draftWindow.PrintLine("Unknown error from server: " + parts[1]);
                 client.Disconnect();
+            }
+            else if (parts[0] == "IMAGE_DIR")
+            {
+                Util.imageDirectory = parts[1];
+                draftWindow.PrintLine("Set image directory.");
             }
             else if (parts[0] == "USER_CONNECTED")
             {
@@ -106,6 +112,7 @@ namespace IsochronDrafter
             else if (parts[0] == "BOOSTER")
             {
                 draftWindow.PopulateDraftPicker(msg);
+                draftWindow.EnableDraftPicker();
             }
             else if (parts[0] == "CARD_POOL")
             {

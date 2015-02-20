@@ -31,6 +31,11 @@ namespace IsochronDrafter
                 DraftWindow.LoadImage(cardName);
             Invalidate();
         }
+        public void Clear()
+        {
+            cardNames = new List<string>();
+            Invalidate();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
