@@ -1,0 +1,1057 @@
+Kavanagh
+
+Inspiring Word
+common
+
+Mithras, Goddess of Chains
+mythic rare
+
+Abdukherai Ambusher
+common
+
+Abdukherai Avenger
+common
+
+Advance Warning
+common
+
+Armory Wall
+uncommon
+
+As It Was
+uncommon
+
+Astral Speaker
+uncommon
+
+Audience with the Goddess
+common
+
+Aurasyne Devotee
+basic land
+
+Auspicious Upbringing
+common
+
+Christoph Lesipit
+rare
+
+Citizen Conscription
+uncommon
+
+City Walls
+common
+
+Contingency Defense
+uncommon
+
+Day of Divinity
+rare
+
+Defense Force
+uncommon
+
+Ecumenical Priest
+rare
+
+Enrapturement
+uncommon
+
+Extended Rest
+uncommon
+
+First to Battle
+uncommon
+
+Foxhole Prayer
+common
+
+Glorious Combat
+common
+
+Great-Gate Keeper
+common
+
+Grimalkin Arbiter
+uncommon
+
+Hat Almond, Haberdasher
+rare
+
+Illiteracy
+uncommon
+
+Impromptu Poetry
+uncommon
+
+Kavanagh Commander
+rare
+
+Kavanagh Guard
+common
+
+Keepers of the Vow
+common
+
+Life Sentence
+common
+
+Mirror-Show Mummer
+uncommon
+
+Mosk, Shaft of Sunlight
+rare
+
+Noble Descendancy
+common
+
+Oussean Infantryman
+common
+
+Pandion Peregrine
+rare
+
+Parry
+common
+
+Preservation Angel
+rare
+
+Private Regiment
+uncommon
+
+Raptorave
+common
+
+Sehanine Moonbow
+mythic rare
+
+Soulstorm Eye
+rare
+
+Spread the Word
+rare
+
+Sura Peregrine
+rare
+
+Tiena’s Intervention
+common
+
+Tradevessel Lookout
+common
+
+War Caravan
+common
+
+What Is Written
+mythic rare
+
+Wistopheles Shelfsmith
+rare
+
+Amphystrian Horror
+common
+
+Anthropothere
+uncommon
+
+Auraphagy
+uncommon
+
+Bodysnatch
+common
+
+Cast Away
+common
+
+Chitchat
+common
+
+Clandestine Escape
+uncommon
+
+Complete Control
+rare
+
+Conniving Hydromancer
+common
+
+Constricting Hydromancer
+uncommon
+
+Contragravity
+common
+
+Delphine Druid
+common
+
+Depths of Madness
+common
+
+Doubletake Dyad
+rare
+
+Dream of Flight
+uncommon
+
+Eavesdrop
+uncommon
+
+Eidetic Memory
+uncommon
+
+Emphatic Hydromancer
+uncommon
+
+Glacial Pace
+common
+
+Hydromancer Neophyte
+uncommon
+
+Kismeré Cassia
+rare
+
+Kismeré’s Tutelage
+common
+
+Lovecraftian Cryptid
+common
+
+Masquerade
+common
+
+Mental Meltdown
+common
+
+Merfolk Mindpiercer
+uncommon
+
+Mineré Cassia
+rare
+
+Misremember
+common
+
+Möbius Cantrip
+uncommon
+
+Null and Void
+common
+
+N’yuyan Pirate
+common
+
+Omnipresence
+mythic rare
+
+Oussean Cannoneer
+common
+
+Psionic Stab
+uncommon
+
+Quintessence
+mythic rare
+
+Revert
+common
+
+Satellite Thoughts
+uncommon
+
+School of Psyfish
+common
+
+Severe Hydromancer
+uncommon
+
+Shaky Hands
+common
+
+Slow Motion
+uncommon
+
+Split Brain
+rare
+
+Streetwise
+common
+
+Subjugation
+rare
+
+Sywai Troiae, Archmage
+mythic rare
+
+Sywai’s Tutelage
+common
+
+Tanager-in-Mourning
+common
+
+Time Flies
+uncommon
+
+Time Freeze
+rare
+
+University Professor
+common
+
+University Student
+rare
+
+Abdukherai Extremist
+common
+
+Amphistyr of the Dark Appetite
+rare
+
+Anathematics
+uncommon
+
+Anguish
+common
+
+Anyaneta of the Bleeding Pool
+rare
+
+Atramentaceous Mesmerism
+uncommon
+
+Azimech of the Pestilent Void
+rare
+
+Blood-Borne Armor
+common
+
+Breath of Amphistyr
+rare
+
+Deicide
+uncommon
+
+Demonweb Drider
+uncommon
+
+Downward Spiral
+uncommon
+
+Dreg Exterminator
+uncommon
+
+Drow Tinkerer
+uncommon
+
+Drown in Blood
+uncommon
+
+Erode Mind
+uncommon
+
+Fatal Inaction
+common
+
+Fen Snail
+uncommon
+
+Flametongue Demon
+common
+
+Haemomancer
+common
+
+Harbinger’s Swarm
+common
+
+Lolth, Spider Queen
+mythic rare
+
+Lolth’s Whispers
+uncommon
+
+Maim
+common
+
+Mind Break
+common
+
+Misleading Journey
+uncommon
+
+Nathrysn, the Necroshaper
+rare
+
+Ongoing Damage
+common
+
+Purgatory Denizen
+common
+
+Putrescent Mycant
+common
+
+Pyrrhic Victory
+common
+
+Shared Suffering
+uncommon
+
+Singular Obsession
+uncommon
+
+Suicide Mission
+common
+
+Undead Arena
+uncommon
+
+Unfathomable Darkness
+uncommon
+
+Unleash Hell
+mythic rare
+
+Weirm of the Parted Veil
+rare
+
+Wisland Traveler
+uncommon
+
+Yawning-Plain Cultist
+rare
+
+Zaitra Direland
+rare
+
+Abdukherai Infiltrator
+common
+
+Abdukherai Pyromancer
+common
+
+Al Bhandi
+rare
+
+Anyaneta’s Ooze
+uncommon
+
+Ash Elemental
+common
+
+Ashiin’s Thugs
+uncommon
+
+Bluff
+uncommon
+
+Catch Fire
+uncommon
+
+The City Burns
+mythic rare
+
+Column Burners
+uncommon
+
+Devil May Care
+common
+
+Devious Deceiver
+common
+
+Dracolyte
+uncommon
+
+Fire and Gunpowder
+common
+
+Firerang
+common
+
+Forest Fire
+uncommon
+
+Gimmick
+rare
+
+Goblin Broker
+uncommon
+
+Goblin Kinetomancer
+uncommon
+
+Godshorn Goblin
+common
+
+Gossamer Javelin
+common
+
+Hubris
+uncommon
+
+Lacerine
+common
+
+Lava Elemental
+uncommon
+
+Lordship of War
+uncommon
+
+Mayhem
+uncommon
+
+Outnumber
+common
+
+Pyronomial Elation
+rare
+
+Rain of Thorns
+rare
+
+Rubyfang Barrage
+common
+
+Sandfarer
+uncommon
+
+Sea of Spears
+common
+
+Senseless War
+rare
+
+Shattershot
+common
+
+Show of Force
+uncommon
+
+Stirge
+uncommon
+
+Tectonic Strength
+common
+
+Tricephalic Dragon
+uncommon
+
+Whirlwind Skirmish
+rare
+
+Willful Ignorance
+uncommon
+
+Zalki Direland
+rare
+
+Adrenoloth
+common
+
+Aeyna Brokenwing
+rare
+
+Alpha Angel
+rare
+
+Altitudinal Advantage
+uncommon
+
+Bears Repeating
+rare
+
+Bloomback Gambol
+common
+
+Canopy-Ward Shaman
+common
+
+Caprice of the Leylines
+common
+
+Civilization’s Bane
+rare
+
+Continental Enchantress
+common
+
+Dizzying Diversity
+common
+
+Downburst
+common
+
+Elven Accuracy
+common
+
+Feywild Gardener
+uncommon
+
+First Wind
+common
+
+Forage for Reagents
+uncommon
+
+Glanceglass Serpent
+common
+
+Gripvale Dryad
+common
+
+Gripvale Owlbear
+common
+
+Heart of Nature
+rare
+
+Hybrid Growth
+uncommon
+
+Landloch
+uncommon
+
+Lofty Mycant
+uncommon
+
+Lost in the Herd
+common
+
+Manifold Apparition
+common
+
+Manipulating Roots
+common
+
+Mass Awakening
+rare
+
+Megafauna Invocation
+rare
+
+Niyuyarine Gnollpack
+common
+
+N’yuyan Farmer
+common
+
+Outland Elf
+common
+
+Periphery Patrol
+common
+
+Piculet Trophyhunter
+common
+
+Quillback Troll
+uncommon
+
+Sciurine Druid
+common
+
+Splendor
+uncommon
+
+Tanager-Home
+common
+
+Tanager’s Song Gatherer
+uncommon
+
+Towering Sloth
+common
+
+Trophyland Expedition
+rare
+
+Trophyland Tiger
+common
+
+Ursine Druid
+common
+
+Yupei of Jailun’s Arm
+rare
+
+Recruitment Campaign
+uncommon
+
+Temporal Maneuvers
+uncommon
+
+Abdukherai Sniper
+uncommon
+
+Forsake
+rare
+
+Mana Void
+rare
+
+Sphinx’s Inquisition
+rare
+
+Cardiectomy
+rare
+
+Last Hurrah
+common
+
+Manacaust
+rare
+
+Druid of Wev
+common
+
+Gripvale Treant
+rare
+
+Piculet Craftsmanship
+rare
+
+Bestial Apparition
+rare
+
+Niyuyarine Sentinel
+common
+
+Pseudomessiah
+rare
+
+Tiena Solhould
+rare
+
+Holloweye
+uncommon
+
+Retcon
+common
+
+Juvenile Dracosphinx
+uncommon
+
+Shiptaker-Camp Arson
+uncommon
+
+Tjatta, Draconic Scholar
+mythic rare
+
+Turbulence Elemental
+uncommon
+
+Wildmagic Plane
+rare
+
+Arudaria
+rare
+
+Visejaw Crocodile
+uncommon
+
+Arjohn Silvervine
+mythic rare
+
+Bellicose Seraph
+rare
+
+Drunken Stupor
+common
+
+Pandion, General Apparent
+rare
+
+Garrote Boa
+uncommon
+
+Interspecies Mating
+uncommon
+
+Lost in Time and Space
+rare
+
+Remote Surveyance
+uncommon
+
+Banshel, Ambagier
+rare
+
+Clonescape
+rare
+
+Dipadua Pirawega
+rare
+
+Fractalite Core
+rare
+
+He, God of No Name
+mythic rare
+
+Locust Swarm Technique
+uncommon
+
+Multiverse Theory
+rare
+
+Undersky Awakened
+mythic rare
+
+Adamant Mage
+uncommon
+
+Feather Charm
+common
+
+Mist Elemental
+common
+
+Ink Charm
+common
+
+Brimstone Charm
+common
+
+Gladiator Shaman
+uncommon
+
+Horn Charm
+common
+
+Manapulate
+common
+
+Minmax
+rare
+
+Trophyland Ambush
+common
+
+Unprovoked Attack
+uncommon
+
+Dew Charm
+common
+
+Inherit the Earth
+common
+
+Moonstroke
+common
+
+Smoke Charm
+common
+
+Time of Tribulation
+rare
+
+Glass Charm
+common
+
+Refract
+common
+
+Spore Charm
+common
+
+Sun Charm
+common
+
+Root Charm
+common
+
+Coup de Grâce
+common
+
+Dungeons
+rare
+
+Adhesive Explosive
+common
+
+Anklet of the Gymnast
+common
+
+Atramentum Livyatanum
+common
+
+Cigleaf Kill-Devil
+rare
+
+Clockwork Goddess
+uncommon
+
+Fractalite Crown
+common
+
+Godshear
+mythic rare
+
+Isochron Sphere
+uncommon
+
+Kavanagh’s Great Gates
+rare
+
+Malign Phylactery
+common
+
+Mercurial Mask
+rare
+
+Moment Stone
+rare
+
+Pensive Giant
+uncommon
+
+Recursive Leech
+uncommon
+
+Restful Bedroll
+common
+
+Robotic Oppressor
+common
+
+Serum Gel
+rare
+
+Soulsplitter
+rare
+
+Spectrum Glutton
+common
+
+Talisman of Frantic Dreams
+uncommon
+
+Thousand-and-First
+common
+
+Tireless Construct
+rare
+
+Token of Fortune Amplified
+uncommon
+
+Yidophiin Steel
+uncommon
+
+Abdukherim Oasis
+uncommon
+
+Bazaar Kavanagh
+mythic rare
+
+Bottomless Chasm
+uncommon
+
+Commanding View
+uncommon
+
+Devastated Fort
+uncommon
+
+Godshorn Mesa
+uncommon
+
+Gripvale Wood
+uncommon
+
+Mangrove Coast
+uncommon
+
+Night-Sky Vista
+rare
+
+Oceanfront Estate
+uncommon
+
+Okda Champaign
+uncommon
+
+Tundra Atiliera
+uncommon
+
+Wisland Fen
+uncommon
+
+Plains
+basic land
+
+Plains
+basic land
+
+Plains
+basic land
+
+Plains
+basic land
+
+Plains
+basic land
+
+Island
+basic land
+
+Island
+basic land
+
+Island
+basic land
+
+Island
+basic land
+
+Island
+basic land
+
+Swamp
+basic land
+
+Swamp
+basic land
+
+Swamp
+basic land
+
+Swamp
+basic land
+
+Swamp
+basic land
+
+Mountain
+basic land
+
+Mountain
+basic land
+
+Mountain
+basic land
+
+Mountain
+basic land
+
+Mountain
+basic land
+
+Forest
+basic land
+
+Forest
+basic land
+
+Forest
+basic land
+
+Forest
+basic land
+
+Forest
+basic land

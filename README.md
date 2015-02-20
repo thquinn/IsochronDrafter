@@ -1,18 +1,23 @@
 Isochron Drafter
 ================
 
-A hacked-together way to draft custom Magic sets online.
+A hacked-together way to draft custom Magic: the Gathering sets online.
 
 ## Features
 * Draft custom Magic sets online with your friends!
-* Graphical deck builder allows you to build your deck as you play!
+* Graphical deck builder allows you to build your deck as you draft!
 * That's it.
+
+## What's Broken?
+Well, a lot of stuff. For starters:
+* Slow image downloading
+* Scrollbars sometimes flicker rapidly when they appear/disappear
+* Very little error handling when parsing set files, loading images, etc.
 
 ## Coming Soon
 * A more configurable server
-* A more configurable client
-* Tons of graphical bug fixes
-* Lots more error handling
+* Graphical bug fixes
+* More error handling
 * Miscellaneous beautification
 
 ## How to Use

@@ -105,7 +105,6 @@ namespace IsochronDrafter
             }
             else if (parts[0] == "BOOSTER")
             {
-                draftWindow.PrintLine("Next booster received.");
                 draftWindow.PopulateDraftPicker(msg);
             }
             else if (parts[0] == "CARD_POOL")

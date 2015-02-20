@@ -122,7 +122,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="scripts\magic-isochrondrafter.mse-export-template\export-template" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\tcpServer\tcpServer.csproj">

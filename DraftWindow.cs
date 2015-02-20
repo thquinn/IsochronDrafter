@@ -83,6 +83,7 @@ namespace IsochronDrafter
         {
             List<string> booster = new List<string>(message.Split('|'));
             booster.RemoveAt(0);
+            PrintLine("Received booster with " + booster.Count + (booster.Count == 1 ? " card." : " cards."));
             draftPicker.Populate(booster);
         }
         public void ClearDraftPicker()
@@ -110,6 +111,54 @@ namespace IsochronDrafter
             int index = draftPicker.GetIndexFromCoor(me.X, me.Y);
             if (index != -1)
                 draftClient.Pick(index, draftPicker.cardNames[index]);
+        }
+
+        // Menu items.
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        private void copyDeckToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(deckBuilder.GetCockatriceDeck());
+        }
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            deckBuilder.SetNumColumns(4);
+            UnCheckColumns();
+            toolStripMenuItem2.Checked = true;
+        }
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            deckBuilder.SetNumColumns(5);
+            UnCheckColumns();
+            toolStripMenuItem3.Checked = true;
+        }
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            deckBuilder.SetNumColumns(6);
+            UnCheckColumns();
+            toolStripMenuItem4.Checked = true;
+        }
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            deckBuilder.SetNumColumns(7);
+            UnCheckColumns();
+            toolStripMenuItem5.Checked = true;
+        }
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            deckBuilder.SetNumColumns(8);
+            UnCheckColumns();
+            toolStripMenuItem6.Checked = true;
+        }
+        private void UnCheckColumns()
+        {
+            toolStripMenuItem2.Checked = false;
+            toolStripMenuItem3.Checked = false;
+            toolStripMenuItem4.Checked = false;
+            toolStripMenuItem5.Checked = false;
+            toolStripMenuItem6.Checked = false;
         }
     }
 }

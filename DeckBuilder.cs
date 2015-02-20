@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Layout;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
 
 namespace IsochronDrafter
 {
@@ -32,6 +33,8 @@ namespace IsochronDrafter
             : base()
         {
             AutoScroll = true;
+            AutoScrollMargin = new System.Drawing.Size(0, 0);
+
             columns = new List<List<DeckBuilderCard>[]>();
             for (int i = 0; i < NUM_INITIAL_COLUMNS; i++)
             {
@@ -68,6 +71,26 @@ namespace IsochronDrafter
                 columns[i][1] = new List<DeckBuilderCard>();
             }
         }
+        public void SetNumColumns(int numColumns)
+        {
+            while (columns.Count > numColumns)
+            {
+                // Remove second-to-last column.
+                List<DeckBuilderCard>[] column = columns[columns.Count - 2];
+                columns.RemoveAt(columns.Count - 2);
+                columns[columns.Count - 2][0].AddRange(column[0]);
+                columns[columns.Count - 2][1].AddRange(column[1]);
+            }
+            while (columns.Count < numColumns)
+            {
+                // Add new second-to-last column.
+                List<DeckBuilderCard>[] column = new List<DeckBuilderCard>[2];
+                column[0] = new List<DeckBuilderCard>();
+                column[1] = new List<DeckBuilderCard>();
+                columns.Insert(columns.Count - 1, column);
+            }
+            LayoutControls();
+        }
 
         protected override void OnInvalidated(InvalidateEventArgs e)
         {
@@ -93,6 +116,7 @@ namespace IsochronDrafter
                         }
                         if (row == 1)
                             y += layout.secondRowY;
+                        y -= VerticalScroll.Value;
                         card.Left = (int)Math.Round(x);
                         card.Top = (int)Math.Round(y);
                         card.Width = (int)Math.Round(CARD_WIDTH * layout.scale);
@@ -163,7 +187,6 @@ namespace IsochronDrafter
                 {
                     DeckBuilderLayout layout = new DeckBuilderLayout(this);
                     // TODO: COPIED FROM LayoutControls()! Bad!
-                    Console.WriteLine(column + ", " + row + ", " + cardNum);
                     float x = layout.spacing * (column + 1) + (CARD_WIDTH * layout.scale * column);
                     float y = layout.spacing + (layout.headerSize * cardNum);
                     if (column == columns.Count - 1)
@@ -175,6 +198,7 @@ namespace IsochronDrafter
                         y += layout.secondRowY;
                     if (cardNum != 0 && cardNum == columns[column][row].Count)
                         y += CARD_HEIGHT * layout.scale - layout.headerSize;
+                    y -= VerticalScroll.Value;
                     // END COPY
                     indicator.Left = (int)Math.Round(x - 2);
                     indicator.Top = (int)Math.Round(y - 1);
@@ -236,6 +260,7 @@ namespace IsochronDrafter
             if (column >= columns.Count)
                 return null;
             bool isEmpty = GetMaxFirstRowLength() == 0;
+            y += VerticalScroll.Value;
             int row = y < layout.secondRowY || isEmpty || column == columns.Count - 1 ? 0 : 1;
             int cardNum;
             if (columns[column][row].Count == 0) // Dragged card should get put as the first element in the now-empty column.
@@ -292,6 +317,29 @@ namespace IsochronDrafter
                 if (columns[i][0].Count > output)
                     output = columns[i][0].Count;
             return output;
+        }
+
+        public String GetCockatriceDeck()
+        {
+            Dictionary<string, int> quantities = new Dictionary<string, int>();
+            Dictionary<string, int> sideboardQuantities = new Dictionary<string, int>();
+            for (int column = 0; column < columns.Count; column++)
+                for (int row = 0; row < 2; row++)
+                    for (int cardNum = 0; cardNum < columns[column][row].Count; cardNum++)
+                    {
+                        Dictionary<string, int> dictionary = column == columns.Count - 1 ? sideboardQuantities : quantities;
+                        string cardName = columns[column][row][cardNum].cardName;
+                        if (dictionary.ContainsKey(cardName))
+                            dictionary[cardName]++;
+                        else
+                            dictionary.Add(cardName, 1);
+                    }
+            string output = "";
+            foreach (KeyValuePair<string, int> kvp in quantities)
+                output += "\r\n" + kvp.Value + " " + kvp.Key;
+            foreach (KeyValuePair<string, int> kvp in sideboardQuantities)
+                output += "\r\nSB: " + kvp.Value + " " + kvp.Key;
+            return output.Trim();
         }
     }
 
