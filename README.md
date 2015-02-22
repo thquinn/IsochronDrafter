@@ -14,7 +14,6 @@ Windows and .NET 4.0, until someone wants to do a Mono port.
 ## What's Broken?
 Well, a lot of stuff. For starters:
 * Slow image downloading
-* Scrollbars sometimes flicker rapidly when they appear/disappear
 * Little to no error handling when parsing set files, loading images, etc.
 
 ## Coming Eventually

@@ -33,7 +33,6 @@ namespace IsochronDrafter
             : base()
         {
             AutoScroll = true;
-            AutoScrollMargin = new System.Drawing.Size(0, 0);
 
             columns = new List<List<DeckBuilderCard>[]>();
             for (int i = 0; i < NUM_INITIAL_COLUMNS; i++)
@@ -99,6 +98,11 @@ namespace IsochronDrafter
         }
         private void LayoutControls()
         {
+            if (VerticalScroll.Visible)
+                AutoScrollMargin = new Size(0, System.Windows.Forms.SystemInformation.HorizontalScrollBarHeight);
+            else
+                AutoScrollMargin = new Size(0, 0);
+
             DeckBuilderLayout layout = new DeckBuilderLayout(this);
 
             for (int column = 0; column < columns.Count; column++)
@@ -385,8 +389,9 @@ namespace IsochronDrafter
         public DeckBuilderLayout(DeckBuilder deckBuilder)
         {
             int columnCount = deckBuilder.ColumnCount();
-            scale = (deckBuilder.ClientSize.Width * (1 - DeckBuilder.SPACING_PERCENTAGE) / columnCount) / DeckBuilder.CARD_WIDTH;
-            spacing = (deckBuilder.ClientSize.Width * DeckBuilder.SPACING_PERCENTAGE) / (columnCount + 1 + (DeckBuilder.SIDEBOARD_SPACING_MULTIPLIER - 1) * 2);
+            float usableWidth = deckBuilder.ClientSize.Width;
+            scale = (usableWidth * (1 - DeckBuilder.SPACING_PERCENTAGE) / columnCount) / DeckBuilder.CARD_WIDTH;
+            spacing = (usableWidth * DeckBuilder.SPACING_PERCENTAGE) / (columnCount + 1 + (DeckBuilder.SIDEBOARD_SPACING_MULTIPLIER - 1) * 2);
             headerSize = DeckBuilder.CARD_HEIGHT * scale * DeckBuilder.CARD_HEADER_PERCENTAGE;
             int maxFirstRowLength = deckBuilder.GetMaxFirstRowLength();
             secondRowY = (spacing * DeckBuilder.INTER_ROW_SPACING_MULTIPLIER - 1) + (headerSize * (maxFirstRowLength - 1)) + (DeckBuilder.CARD_HEIGHT * scale);
