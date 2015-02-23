@@ -170,5 +170,51 @@ namespace IsochronDrafter
             toolStripMenuItem5.Checked = false;
             toolStripMenuItem6.Checked = false;
         }
+
+        private void DraftWindow_Resize(object sender, EventArgs e)
+        {
+            int contentWidth = Size.Width - 46;
+            int contentHeight = Size.Height - 83;
+            draftPicker.Location = new Point(12, 27);
+            draftPicker.Size = new Size(Size.Width - 40, (int)Math.Round(contentHeight * .525f));
+            int statusWidth = Math.Min(334, (int)Math.Round(contentWidth * .275f));
+            deckBuilder.Location = new Point(12, draftPicker.Bottom + 6);
+            deckBuilder.Size = new Size(contentWidth - statusWidth, contentHeight - draftPicker.Height);
+            statusTextBox.Location = new Point(deckBuilder.Right + 6, deckBuilder.Top);
+            statusTextBox.Size = new Size(statusWidth, deckBuilder.Height);
+            draftPicker.Invalidate();
+            deckBuilder.Invalidate();
+        }
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            Size = new Size(750, 600);
+            UnCheckWindowSize();
+            toolStripMenuItem7.Checked = true;
+        }
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            Size = new Size(960, 768);
+            UnCheckWindowSize();
+            toolStripMenuItem8.Checked = true;
+        }
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            Size = new Size(1280, 1024);
+            UnCheckWindowSize();
+            toolStripMenuItem9.Checked = true;
+        }
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            Size = new Size(1500, 1200);
+            UnCheckWindowSize();
+            toolStripMenuItem10.Checked = true;
+        }
+        private void UnCheckWindowSize()
+        {
+            toolStripMenuItem7.Checked = false;
+            toolStripMenuItem8.Checked = false;
+            toolStripMenuItem9.Checked = false;
+            toolStripMenuItem10.Checked = false;
+        }
     }
 }

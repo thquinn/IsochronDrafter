@@ -34,12 +34,17 @@
             this.copyDeckToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.deckBuilder = new IsochronDrafter.DeckBuilder();
             this.draftPicker = new IsochronDrafter.DraftPicker();
             this.menuStrip1.SuspendLayout();
@@ -48,11 +53,11 @@
             // statusTextBox
             // 
             this.statusTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.statusTextBox.Location = new System.Drawing.Point(918, 518);
+            this.statusTextBox.Location = new System.Drawing.Point(918, 527);
             this.statusTextBox.Multiline = true;
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.ReadOnly = true;
-            this.statusTextBox.Size = new System.Drawing.Size(344, 466);
+            this.statusTextBox.Size = new System.Drawing.Size(334, 447);
             this.statusTextBox.TabIndex = 5;
             // 
             // menuStrip1
@@ -62,7 +67,7 @@
             this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1274, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -95,10 +100,22 @@
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.windowSizeToolStripMenuItem,
             this.columnsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
+            // 
+            // windowSizeToolStripMenuItem
+            // 
+            this.windowSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10});
+            this.windowSizeToolStripMenuItem.Name = "windowSizeToolStripMenuItem";
+            this.windowSizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.windowSizeToolStripMenuItem.Text = "Window Size...";
             // 
             // columnsToolStripMenuItem
             // 
@@ -109,7 +126,7 @@
             this.toolStripMenuItem5,
             this.toolStripMenuItem6});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.columnsToolStripMenuItem.Text = "Columns...";
             // 
             // toolStripMenuItem2
@@ -154,14 +171,44 @@
             this.toolStripMenuItem6.Text = "8";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem7.Text = "750×600";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem8.Text = "960×768";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Checked = true;
+            this.toolStripMenuItem9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem9.Text = "1280×1024";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem10.Text = "1500×1200";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
             // deckBuilder
             // 
             this.deckBuilder.AutoScroll = true;
             this.deckBuilder.BackColor = System.Drawing.SystemColors.Window;
             this.deckBuilder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.deckBuilder.Location = new System.Drawing.Point(12, 518);
+            this.deckBuilder.Location = new System.Drawing.Point(12, 527);
             this.deckBuilder.Name = "deckBuilder";
-            this.deckBuilder.Size = new System.Drawing.Size(900, 466);
+            this.deckBuilder.Size = new System.Drawing.Size(900, 447);
             this.deckBuilder.TabIndex = 6;
             // 
             // draftPicker
@@ -170,7 +217,7 @@
             this.draftPicker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.draftPicker.Location = new System.Drawing.Point(12, 27);
             this.draftPicker.Name = "draftPicker";
-            this.draftPicker.Size = new System.Drawing.Size(1250, 485);
+            this.draftPicker.Size = new System.Drawing.Size(1240, 494);
             this.draftPicker.TabIndex = 3;
             this.draftPicker.DoubleClick += new System.EventHandler(this.draftPicker1_DoubleClick);
             // 
@@ -178,16 +225,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 996);
+            this.ClientSize = new System.Drawing.Size(1264, 986);
             this.Controls.Add(this.deckBuilder);
             this.Controls.Add(this.statusTextBox);
             this.Controls.Add(this.draftPicker);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DraftWindow";
             this.Text = "Isochron Drafter";
             this.Load += new System.EventHandler(this.DraftWindow_Load);
+            this.Resize += new System.EventHandler(this.DraftWindow_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -211,6 +258,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem windowSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
     }
 }
 

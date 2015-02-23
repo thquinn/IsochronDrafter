@@ -91,6 +91,11 @@ namespace IsochronDrafter
             LayoutControls();
         }
 
+        protected override void OnResize(EventArgs eventargs)
+        {
+            LayoutControls();
+            base.OnResize(eventargs);
+        }
         protected override void OnInvalidated(InvalidateEventArgs e)
         {
             LayoutControls();
