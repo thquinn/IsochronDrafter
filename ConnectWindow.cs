@@ -17,6 +17,7 @@ namespace IsochronDrafter
             MaximizeBox = false;
             #if DEBUG
             textBox1.Text = "isochron.us.to";
+            ActiveControl = textBox2;
             #endif
         }
 

@@ -81,7 +81,7 @@ namespace IsochronDrafter
             parts.RemoveAt(0);
             packCounts = "";
             for (int i = 0; i < parts.Count - 1; i += 2)
-                packCounts += "\r\n" + parts[i] + " has " + parts[i + 1] + " packs.";
+                packCounts += "\r\n" + parts[i] + " has " + parts[i + 1] + (parts[i + 1] == "1" ? " pack." : " packs.");
             SetStatusTextBox();
         }
         private void SetStatusTextBox()

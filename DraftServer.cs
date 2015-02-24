@@ -198,7 +198,10 @@ namespace IsochronDrafter
                         if (draftStateToCheck.boosters.Count > 0)
                             packOver = false;
                     if (packOver)
+                    {
                         StartNextPack();
+                        return;
+                    }
                 }
 
                 // Current player gets the next booster in their queue, if any.
