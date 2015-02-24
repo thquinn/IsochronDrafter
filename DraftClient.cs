@@ -109,6 +109,10 @@ namespace IsochronDrafter
                 string userList = string.Join(", ", parts).Substring(2);
                 draftWindow.PrintLine("There are now " + (parts.Length - 1) + " users in the lobby: " + userList);
             }
+            else if (parts[0] == "PACK_COUNT")
+            {
+                draftWindow.SetPackCounts(msg);
+            }
             else if (parts[0] == "BOOSTER")
             {
                 draftWindow.PopulateDraftPicker(msg);

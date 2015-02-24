@@ -19,6 +19,7 @@ namespace IsochronDrafter
         public CardWindow cardWindow;
         public DraftClient draftClient;
         public bool canPick = true;
+        public string packCounts = "", statusText = "";
 
         public DraftWindow()
         {
@@ -71,11 +72,26 @@ namespace IsochronDrafter
 
         public void PrintLine(string text)
         {
+            statusText += "\r\n" + text;
+            SetStatusTextBox();
+        }
+        public void SetPackCounts(string message)
+        {
+            List<string> parts = new List<string>(message.Split('|'));
+            parts.RemoveAt(0);
+            packCounts = "";
+            for (int i = 0; i < parts.Count - 1; i += 2)
+                packCounts += "\r\n" + parts[i] + " has " + parts[i + 1] + " packs.";
+            SetStatusTextBox();
+        }
+        private void SetStatusTextBox()
+        {
             statusTextBox.Invoke(new MethodInvoker(delegate
             {
-                if (statusTextBox.Text.Length != 0)
-                    statusTextBox.Text += "\r\n";
-                statusTextBox.Text += text;
+                if (packCounts.Length == 0)
+                    statusTextBox.Text = statusText.Trim();
+                else
+                    statusTextBox.Text = statusText.Trim() + "\r\n\r\n" + packCounts.Trim();
                 statusTextBox.SelectionStart = statusTextBox.Text.Length;
                 statusTextBox.ScrollToCaret();
             }));

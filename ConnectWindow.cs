@@ -24,16 +24,15 @@ namespace IsochronDrafter
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Length == 0)
-            {
                 MessageBox.Show("You must enter a server.");
-                return;
-            }
             else if (textBox2.Text.Length == 0)
-            {
                 MessageBox.Show("You must enter an alias.");
-                return;
-            }
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+            else if (textBox2.Text.Length > 16)
+                MessageBox.Show("Please use an alias with sixteen or fewer characters.");
+            else if (textBox2.Text.Contains('|') || textBox2.Text.Contains(';'))
+                MessageBox.Show("Your alias contains disallowed characters.");
+            else
+                DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 

@@ -206,6 +206,9 @@ namespace IsochronDrafter
                 {
                     TrySendMessage(connection, "BOOSTER|" + string.Join("|", draftState.boosters[0]));
                 }
+
+                // Send message with pack count of each player.
+                SendPackCounts();
             }
             else
                 serverWindow.PrintLine("<" + GetAlias(connection) + "> Unknown message: " + msg);
@@ -232,6 +235,13 @@ namespace IsochronDrafter
                 else if (lines[1] == "mythic rare")
                     mythicRares.Add(lines[0]);
             }
+        }
+        private void SendPackCounts()
+        {
+            string message = "PACK_COUNT";
+            foreach (DraftState draftState in draftStates)
+                message += "|" + draftState.alias + "|" + draftState.boosters.Count;
+            TrySendMessage(message);
         }
 
         public void StartNextPack()
@@ -260,6 +270,7 @@ namespace IsochronDrafter
                 draftState.AddBooster(booster);
                 TrySendMessage(draftState.alias, "BOOSTER|" + string.Join("|", booster));
             }
+            SendPackCounts();
             serverWindow.PrintLine("Passed out pack #" + packNumber + ".");
         }
         private List<string> GenerateBooster()

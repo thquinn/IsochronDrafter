@@ -19,7 +19,6 @@ Well, a lot of stuff. For starters:
 
 ## Coming Eventually
 * More error handling
-* More info about table order, who has how many packs during drafts
 * Better image downloading
 
 ## How to Use
@@ -35,5 +34,5 @@ Well, a lot of stuff. For starters:
 ## Notes
 * Isochron Drafter was written by Tom Quinn, and is available under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). It's a real hack job and not at all representative of my overall coding style or quality.
 * It uses Craig Baird's [C# TCP Server](http://www.codeproject.com/Articles/488668/Csharp-TCP-Server) and skatamatic's [Event-Driven TCP Client](https://www.daniweb.com/software-development/csharp/code/422291/user-friendly-asynchronous-event-driven-tcp-client), each with some minor changes.
-* The MSE export script is cobbled from from pieces of LuridTeaParty's [Cockatrice exporter](http://www.reddit.com/r/custommagic/comments/17d7gw/ive_made_a_script_for_mse_to_export_into/).
+* The MSE export script is cobbled from pieces of LuridTeaParty's [Cockatrice exporter](http://www.reddit.com/r/custommagic/comments/17d7gw/ive_made_a_script_for_mse_to_export_into/).
 * Find my other stuff at my [portfolio site](http://cargocollective.com/tomquinn), and let me know what you think!
