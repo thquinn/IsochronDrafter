@@ -12,14 +12,25 @@ namespace IsochronDrafter
         DraftWindow draftWindow;
         EventDrivenTCPClient client;
         string alias;
+        bool draftDone = false;
 
         public DraftClient(DraftWindow draftWindow, string hostname, string alias)
         {
             this.draftWindow = draftWindow;
             this.alias = alias;
 
-            IPHostEntry hostEntry = Dns.GetHostEntry(hostname);
-            client = new EventDrivenTCPClient(hostEntry.AddressList[0], 10024, false);
+            IPAddress address;
+            if (!IPAddress.TryParse(hostname, out address))
+            {
+                IPHostEntry hostEntry = Dns.GetHostEntry(hostname);
+                if (hostEntry.AddressList.Length == 0)
+                {
+                    draftWindow.PrintLine("Couldn't resolve hostname!");
+                    return;
+                }
+                address = hostEntry.AddressList[0];
+            }
+            client = new EventDrivenTCPClient(address, 10024, false);
             client.DataEncoding = Encoding.UTF8;
             client.ConnectionStatusChanged += new EventDrivenTCPClient.delConnectionStatusChanged(client_ConnectionStatusChanged);
             client.DataReceived += new EventDrivenTCPClient.delDataReceived(client_DataReceived);
@@ -34,12 +45,15 @@ namespace IsochronDrafter
             else if (status == EventDrivenTCPClient.ConnectionStatus.DisconnectedByHost || status == EventDrivenTCPClient.ConnectionStatus.DisconnectedByUser)
             {
                 draftWindow.PrintLine("Connection failed: " + status.ToString());
-                draftWindow.Invoke(new MethodInvoker(delegate
+                if (!draftDone)
                 {
-                    draftWindow.ClearDraftPicker();
-                    draftWindow.OpenConnectWindow();
-                }));
-                draftWindow.ClearCardPool();
+                    draftWindow.Invoke(new MethodInvoker(delegate
+                    {
+                        draftWindow.ClearDraftPicker();
+                        draftWindow.OpenConnectWindow();
+                    }));
+                    draftWindow.ClearCardPool();
+                }
             }
         }
         void client_DataReceived(EventDrivenTCPClient sender, object data)
@@ -127,7 +141,9 @@ namespace IsochronDrafter
             }
             else if (parts[0] == "DONE")
             {
+                draftDone = true;
                 draftWindow.PrintLine("The draft has ended.");
+                draftWindow.ClearPackCounts();
             }
             else
                 draftWindow.PrintLine("Unknown message from server: " + msg);

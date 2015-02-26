@@ -19,7 +19,7 @@ namespace IsochronDrafter
         public CardWindow cardWindow;
         public DraftClient draftClient;
         public bool canPick = true;
-        public string packCounts = "", statusText = "";
+        public string packCounts = "", statusText = "", cardCounts = "";
 
         public DraftWindow()
         {
@@ -28,6 +28,7 @@ namespace IsochronDrafter
             cardWindow = new CardWindow();
             cardWindow.Visible = false;
             draftPicker.cardWindow = cardWindow;
+            deckBuilder.draftWindow = this;
             deckBuilder.cardWindow = cardWindow;
         }
 
@@ -84,14 +85,25 @@ namespace IsochronDrafter
                 packCounts += "\r\n" + parts[i] + " has " + parts[i + 1] + (parts[i + 1] == "1" ? " pack." : " packs.");
             SetStatusTextBox();
         }
+        public void ClearPackCounts()
+        {
+            packCounts = "";
+            SetStatusTextBox();
+        }
+        public void SetCardCounts(int maindeck, int sideboard)
+        {
+            cardCounts = "Your main deck contains " + maindeck + (maindeck == 1 ? " card" : " cards") + " and your sideboard contains " + sideboard + (sideboard == 1 ? " card." : " cards.");
+            SetStatusTextBox();
+        }
         private void SetStatusTextBox()
         {
             statusTextBox.Invoke(new MethodInvoker(delegate
             {
-                if (packCounts.Length == 0)
-                    statusTextBox.Text = statusText.Trim();
-                else
-                    statusTextBox.Text = statusText.Trim() + "\r\n\r\n" + packCounts.Trim();
+                statusTextBox.Text = statusText.Trim();
+                if (packCounts != "")
+                    statusTextBox.Text += "\r\n\r\n" + packCounts.Trim();
+                if (cardCounts != "")
+                    statusTextBox.Text += "\r\n\r\n" + cardCounts.Trim();
                 statusTextBox.SelectionStart = statusTextBox.Text.Length;
                 statusTextBox.ScrollToCaret();
             }));
@@ -102,6 +114,11 @@ namespace IsochronDrafter
             booster.RemoveAt(0);
             PrintLine("Received booster with " + booster.Count + (booster.Count == 1 ? " card." : " cards."));
             draftPicker.Populate(booster);
+            this.Invoke(new MethodInvoker(delegate
+            {
+                if (Form.ActiveForm != this)
+                    FlashWindow.Flash(this);
+            }));
         }
         public void ClearDraftPicker()
         {

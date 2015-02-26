@@ -33,8 +33,10 @@ namespace IsochronDrafter
             else if (textBox2.Text.Contains('|') || textBox2.Text.Contains(';'))
                 MessageBox.Show("Your alias contains disallowed characters.");
             else
+            {
                 DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Close();
+                this.Close();
+            }
         }
 
         // Start Server.
@@ -43,6 +45,7 @@ namespace IsochronDrafter
             ServerWindow serverWindow = new ServerWindow();
             DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.Hide();
+            Owner.Owner = serverWindow;
             serverWindow.Show();
         }
 

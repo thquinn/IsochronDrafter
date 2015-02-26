@@ -13,8 +13,8 @@ namespace IsochronDrafter
 {
     public class DraftServer
     {
-        private static readonly int NUM_RARES_IN_PACK = 1;
-        private static readonly int NUM_UNCOMMONS_IN_PACK = 3;
+        private static readonly int NUM_RARES_IN_PACK = 0;
+        private static readonly int NUM_UNCOMMONS_IN_PACK = 4;
         private static readonly int NUM_COMMONS_IN_PACK = 10;
 
         ServerWindow serverWindow;
@@ -144,6 +144,7 @@ namespace IsochronDrafter
                 }
                 else
                 {
+                    // Reconnect user to draft.
                     serverWindow.PrintLine("<" + GetAlias(connection) + "> has new alias " + parts[1] + ".");
                     aliases.TryAdd(connection, parts[1]);
                     TrySendMessage(connection, "OK|ALIAS");
@@ -156,6 +157,7 @@ namespace IsochronDrafter
                             TrySendMessage(connection, "CARD_POOL|" + string.Join("|", draftState.cardPool));
                         if (draftState.boosters.Count > 0)
                             TrySendMessage(connection, "BOOSTER|" + string.Join("|", draftState.boosters[0]));
+                        SendPackCounts();
                     }
                     else
                     {

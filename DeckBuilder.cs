@@ -23,6 +23,7 @@ namespace IsochronDrafter
         public static readonly Color DRAGGED_STROKE_COLOR = Color.Gold;
         public static readonly int DRAGGED_STROKE_THICKNESS = 5;
 
+        public DraftWindow draftWindow;
         public CardWindow cardWindow;
         private List<List<DeckBuilderCard>[]> columns;
         private DeckBuilderCard draggedCard = null;
@@ -135,6 +136,7 @@ namespace IsochronDrafter
                         Controls.SetChildIndex(card, columns[column][row].Count - cardNum);
                     }
             indicator.BringToFront();
+            SetCardCounts();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -156,11 +158,11 @@ namespace IsochronDrafter
                     return;
 
                 // Reposition card form and draw.
-                float x = card.Left + card.Width / 2f - (CARD_WIDTH / 2f);
-                float y = card.Top + card.Height / 2f - (CARD_HEIGHT / 2f);
-                Point point = PointToScreen(new Point((int)Math.Round(x), (int)Math.Round(y)));
                 cardWindow.SetImage(DraftWindow.GetImage(card.cardName));
-                cardWindow.Location = point;
+                float x = card.Left + card.Width / 2f;
+                float y = card.Top + card.Height / 2f;
+                Point point = PointToScreen(new Point((int)Math.Round(x), (int)Math.Round(y)));
+                cardWindow.SetLocation(point);
                 cardWindow.Show();
                 Focus();
             }
@@ -326,6 +328,21 @@ namespace IsochronDrafter
                 if (columns[i][0].Count > output)
                     output = columns[i][0].Count;
             return output;
+        }
+
+        public void SetCardCounts()
+        {
+            int maindeck = 0;
+            for (int column = 0; column < columns.Count - 1; column++)
+                for (int row = 0; row < 2; row++)
+                    for (int cardNum = 0; cardNum < columns[column][row].Count; cardNum++)
+                        maindeck++;
+            int sideboard = 0;
+            for (int row = 0; row < 2; row++)
+                for (int cardNum = 0; cardNum < columns[columns.Count - 1][row].Count; cardNum++)
+                    sideboard++;
+            if (draftWindow != null && maindeck + sideboard > 0)
+                draftWindow.SetCardCounts(maindeck, sideboard);
         }
 
         public String GetCockatriceDeck()

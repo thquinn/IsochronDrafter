@@ -7,7 +7,7 @@ namespace IsochronDrafter
 {
     public class Util
     {
-        public static readonly int version = 2;
+        public static readonly int version = 3;
         public static string imageDirectory;
         public static Random random = new Random();
 
@@ -22,6 +22,11 @@ namespace IsochronDrafter
                 output.Add(newNumber);
             }
             return output.ToArray();
+        }
+
+        public static int Clamp(int min, int value, int max)
+        {
+            return Math.Min(max, Math.Max(min, value));
         }
     }
 }

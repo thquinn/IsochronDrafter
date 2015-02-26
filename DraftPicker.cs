@@ -85,11 +85,11 @@ namespace IsochronDrafter
                     return;
 
                 // Reposition card form and draw.
-                float x = (i % perRow) * (spacing + CARD_WIDTH * scale) + spacing + (CARD_WIDTH * scale / 2) - (CARD_WIDTH / 2);
-                float y = (i / perRow) * (spacing + CARD_HEIGHT * scale) + spacing + (CARD_HEIGHT * scale / 2) - (CARD_HEIGHT / 2);
-                Point point = PointToScreen(new Point((int)Math.Round(x), (int)Math.Round(y)));
                 cardWindow.SetImage(DraftWindow.GetImage(cardNames[i]));
-                cardWindow.Location = point;
+                float x = (i % perRow) * (spacing + CARD_WIDTH * scale) + spacing + (CARD_WIDTH * scale / 2);
+                float y = (i / perRow) * (spacing + CARD_HEIGHT * scale) + spacing + (CARD_HEIGHT * scale / 2);
+                Point point = PointToScreen(new Point((int)Math.Round(x), (int)Math.Round(y)));
+                cardWindow.SetLocation(point);
                 cardWindow.Show();
                 Focus();
             }
