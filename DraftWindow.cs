@@ -18,11 +18,12 @@ namespace IsochronDrafter
         private static Dictionary<string, Image> cardImages = new Dictionary<string, Image>();
         public CardWindow cardWindow;
         public DraftClient draftClient;
-        public bool canPick = true;
+        public bool canPick = true, chatBlank = true;
         public string packCounts = "", statusText = "", cardCounts = "";
 
         public DraftWindow()
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeComponent();
             MaximizeBox = false;
             cardWindow = new CardWindow();
@@ -156,6 +157,32 @@ namespace IsochronDrafter
             }
         }
 
+        private void chatBox_Enter(object sender, EventArgs e)
+        {
+            if (chatBlank)
+            {
+                chatBox.Text = "";
+                chatBox.ForeColor = Color.Black;
+            }
+        }
+        private void chatBox_Leave(object sender, EventArgs e)
+        {
+            chatBlank = chatBox.Text.Length == 0;
+            if (chatBlank)
+            {
+                chatBox.ForeColor = Color.Gray;
+                chatBox.Text = "Chat";
+            }
+        }
+        private void chatBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && chatBox.Text.Length > 0)
+            {
+                draftClient.Chat(chatBox.Text);
+                chatBox.Text = "";
+            }
+        }
+
         // Menu items.
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -214,7 +241,9 @@ namespace IsochronDrafter
             deckBuilder.Location = new Point(12, draftPicker.Bottom + 6);
             deckBuilder.Size = new Size(contentWidth - statusWidth, contentHeight - draftPicker.Height);
             statusTextBox.Location = new Point(deckBuilder.Right + 6, deckBuilder.Top);
-            statusTextBox.Size = new Size(statusWidth, deckBuilder.Height);
+            statusTextBox.Size = new Size(statusWidth, deckBuilder.Height - 26);
+            chatBox.Location = new Point(statusTextBox.Left, statusTextBox.Bottom + 6);
+            chatBox.Size = new Size(statusWidth, 20);
             draftPicker.Invalidate();
             deckBuilder.Invalidate();
         }
@@ -248,6 +277,6 @@ namespace IsochronDrafter
             toolStripMenuItem8.Checked = false;
             toolStripMenuItem9.Checked = false;
             toolStripMenuItem10.Checked = false;
-        }
+        }    
     }
 }

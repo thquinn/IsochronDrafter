@@ -139,6 +139,10 @@ namespace IsochronDrafter
                     draftWindow.AddCardToPool(parts[i]);
                 draftWindow.PrintLine("Loaded draft.");
             }
+            else if (parts[0] == "CHAT")
+            {
+                draftWindow.PrintLine("<" + parts[1] + ">: " + parts[2]);
+            }
             else if (parts[0] == "DONE")
             {
                 draftDone = true;
@@ -153,6 +157,11 @@ namespace IsochronDrafter
         {
             client.Send("PICK|" + index);
             draftWindow.AddCardToPool(cardName);
+        }
+        public void Chat(string message)
+        {
+            if (client.ConnectionState == EventDrivenTCPClient.ConnectionStatus.Connected)
+                client.Send("CHAT|" + message.Replace(";", "").Replace("|", ""));
         }
     }
 }

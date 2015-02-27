@@ -13,6 +13,7 @@ namespace IsochronDrafter
     {
         public ConnectWindow()
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeComponent();
             MaximizeBox = false;
             #if DEBUG

@@ -215,6 +215,14 @@ namespace IsochronDrafter
                 // Send message with pack count of each player.
                 SendPackCounts();
             }
+            else if (parts[0] == "CHAT")
+            {
+                if (aliases.ContainsKey(connection))
+                {
+                    TrySendMessage("CHAT|" + GetAlias(connection) + "|" + parts[1]);
+                    serverWindow.PrintLine("<" + GetAlias(connection) + ">: " + parts[1]);
+                }
+            }
             else
                 serverWindow.PrintLine("<" + GetAlias(connection) + "> Unknown message: " + msg);
         }

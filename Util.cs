@@ -7,7 +7,7 @@ namespace IsochronDrafter
 {
     public class Util
     {
-        public static readonly int version = 3;
+        public static readonly int version = 4;
         public static string imageDirectory;
         public static Random random = new Random();
 

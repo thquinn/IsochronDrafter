@@ -47,6 +47,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.deckBuilder = new IsochronDrafter.DeckBuilder();
             this.draftPicker = new IsochronDrafter.DraftPicker();
+            this.chatBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.statusTextBox.Multiline = true;
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.ReadOnly = true;
-            this.statusTextBox.Size = new System.Drawing.Size(334, 447);
+            this.statusTextBox.Size = new System.Drawing.Size(334, 420);
             this.statusTextBox.TabIndex = 5;
             // 
             // menuStrip1
@@ -221,11 +222,24 @@
             this.draftPicker.TabIndex = 3;
             this.draftPicker.DoubleClick += new System.EventHandler(this.draftPicker1_DoubleClick);
             // 
+            // chatBox
+            // 
+            this.chatBox.ForeColor = System.Drawing.Color.Gray;
+            this.chatBox.Location = new System.Drawing.Point(919, 953);
+            this.chatBox.Name = "chatBox";
+            this.chatBox.Size = new System.Drawing.Size(333, 20);
+            this.chatBox.TabIndex = 8;
+            this.chatBox.Text = "Chat";
+            this.chatBox.Enter += new System.EventHandler(this.chatBox_Enter);
+            this.chatBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chatBox_KeyDown);
+            this.chatBox.Leave += new System.EventHandler(this.chatBox_Leave);
+            // 
             // DraftWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 986);
+            this.Controls.Add(this.chatBox);
             this.Controls.Add(this.deckBuilder);
             this.Controls.Add(this.statusTextBox);
             this.Controls.Add(this.draftPicker);
@@ -263,6 +277,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.TextBox chatBox;
     }
 }
 

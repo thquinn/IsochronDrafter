@@ -17,6 +17,7 @@ namespace IsochronDrafter
 
         public ServerWindow()
         {
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeComponent();
             MaximizeBox = false;
             #if DEBUG
