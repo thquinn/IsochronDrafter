@@ -13,8 +13,8 @@ namespace IsochronDrafter
 {
     public class DraftServer
     {
-        private static readonly int NUM_RARES_IN_PACK = 0;
-        private static readonly int NUM_UNCOMMONS_IN_PACK = 4;
+        private static readonly int NUM_RARES_IN_PACK = 1;
+        private static readonly int NUM_UNCOMMONS_IN_PACK = 3;
         private static readonly int NUM_COMMONS_IN_PACK = 10;
 
         ServerWindow serverWindow;
@@ -37,6 +37,41 @@ namespace IsochronDrafter
             ParseText(File.ReadAllText(setFilename));
             serverWindow.PrintLine("Loaded set: " + setName + ".");
 
+            server = new TcpServer();
+            server.Port = 10024;
+            server.OnConnect += OnConnect;
+            server.OnDisconnect += OnDisconnect;
+            server.OnDataAvailable += OnDataAvailable;
+            server.Open();
+        }
+        private void ParseText(string txt)
+        {
+            string[] cardStrings = txt.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            setName = cardStrings[0];
+            for (int i = 1; i < cardStrings.Length; i++)
+            {
+                string[] lines = cardStrings[i].Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                if (lines[1] == "common")
+                    commons.Add(lines[0]);
+                else if (lines[1] == "uncommon")
+                    uncommons.Add(lines[0]);
+                else if (lines[1] == "rare")
+                    rares.Add(lines[0]);
+                else if (lines[1] == "mythic rare")
+                    mythicRares.Add(lines[0]);
+            }
+        }
+        public bool IsValidSet()
+        {
+            if (commons.Count == 0 || uncommons.Count == 0 || rares.Count == 0 || mythicRares.Count == 0)
+            {
+                serverWindow.PrintLine("ERROR: Set file must contain at least one common, one uncommon, one rare, and one mythic rare.");
+                return false;
+            }
+            return true;
+        }
+        public void PrintServerStartMessage()
+        {
             // Get public IP address of server.
             string url = "http://checkip.dyndns.org";
             System.Net.WebRequest req = System.Net.WebRequest.Create(url);
@@ -48,13 +83,6 @@ namespace IsochronDrafter
             string[] a3 = a2.Split('<');
             string ip = a3[0];
 
-
-            server = new TcpServer();
-            server.Port = 10024;
-            server.OnConnect += OnConnect;
-            server.OnDisconnect += OnDisconnect;
-            server.OnDataAvailable += OnDataAvailable;
-            server.Open();
             serverWindow.PrintLine("Launched server at " + ip + " on port " + server.Port + ". Accepting connections.");
         }
 
@@ -231,23 +259,6 @@ namespace IsochronDrafter
             if (aliases.ContainsKey(connection))
                 return aliases[connection];
             return (connection.Socket.Client.RemoteEndPoint as IPEndPoint).ToString();
-        }
-        private void ParseText(string txt)
-        {
-            string[] cardStrings = txt.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            setName = cardStrings[0];
-            for (int i = 1; i < cardStrings.Length; i++)
-            {
-                string[] lines = cardStrings[i].Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                if (lines[1] == "common")
-                    commons.Add(lines[0]);
-                else if (lines[1] == "uncommon")
-                    uncommons.Add(lines[0]);
-                else if (lines[1] == "rare")
-                    rares.Add(lines[0]);
-                else if (lines[1] == "mythic rare")
-                    mythicRares.Add(lines[0]);
-            }
         }
         private void SendPackCounts()
         {

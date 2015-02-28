@@ -71,10 +71,14 @@ namespace IsochronDrafter
             if (!Util.imageDirectory.EndsWith("/"))
                 Util.imageDirectory += "/";
             server = new DraftServer(this, textBox2.Text);
-            button1.Enabled = false;
-            button3.Enabled = false;
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
+            if (server.IsValidSet())
+            {
+                button1.Enabled = false;
+                button3.Enabled = false;
+                textBox2.Enabled = false;
+                textBox3.Enabled = false;
+                server.PrintServerStartMessage();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
