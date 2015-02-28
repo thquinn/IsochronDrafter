@@ -1,2 +1,4 @@
-bin/*
-obj/*
+IsochronDrafter/bin/*
+IsochronDrafter/obj/*
+tcpServer/bin/*
+tcpServer/obj/*

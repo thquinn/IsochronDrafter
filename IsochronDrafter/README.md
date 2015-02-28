@@ -24,7 +24,7 @@ Well, a lot of stuff. For starters:
 ## How to Use
 * Install the included Magic Set Editor script. (Put the magic-isochrondrafter.mse-export-template folder into the data folder of your MSE install.)
 * Export your set from Magic Set Editor using the script. (File->Export->HTML...->Isochron Drafter Exporter)
-* Export card images from your set -- filename must be "cardname.full.jpg".
+* Export card images from your set -- filename must be "cardname.full.jpg", and contain no commas or apostrophes, which Magic Set Editor removes by default.
 * Upload the card images from your set somewhere.
 * In Isochron Drafter, start a server. Browse to the exported set file and enter the remote image directory.
 * If you're behind a router, [make sure](http://www.canyouseeme.org/) port 10024 is [forwarded to your computer](http://www.wikihow.com/Set-Up-Port-Forwarding-on-a-Router).
