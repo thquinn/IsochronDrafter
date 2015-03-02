@@ -13,17 +13,15 @@ namespace IsochronDrafter
 {
     public class DraftServer
     {
-        private static readonly int NUM_RARES_IN_PACK = 1;
-        private static readonly int NUM_UNCOMMONS_IN_PACK = 3;
-        private static readonly int NUM_COMMONS_IN_PACK = 10;
-
         ServerWindow serverWindow;
-        TcpServer server;
+        public TcpServer server;
 
         List<string> commons = new List<string>();
         List<string> uncommons = new List<string>();
         List<string> rares = new List<string>();
         List<string> mythicRares = new List<string>();
+        private int packs, numCommonsInPack, numUncommonsInPack, numRaresInPack;
+        private float mythicPercentage;
         public string setName;
         public bool draftStarted = false;
         public int packNumber = 0;
@@ -31,11 +29,16 @@ namespace IsochronDrafter
         public ConcurrentDictionary<TcpServerConnection, string> aliases = new ConcurrentDictionary<TcpServerConnection,string>();
         public DraftState[] draftStates;
 
-        public DraftServer(ServerWindow serverWindow, string setFilename)
+        public DraftServer(ServerWindow serverWindow, string setFilename, int packs, int numCommonsInPack, int numUncommonsInPack, int numRaresInPack, float mythicPercentage)
         {
             this.serverWindow = serverWindow;
             ParseText(File.ReadAllText(setFilename));
             serverWindow.PrintLine("Loaded set: " + setName + ".");
+            this.packs = packs;
+            this.numCommonsInPack = numCommonsInPack;
+            this.numUncommonsInPack = numUncommonsInPack;
+            this.numRaresInPack = numRaresInPack;
+            this.mythicPercentage = mythicPercentage;
 
             server = new TcpServer();
             server.Port = 10024;
@@ -63,9 +66,24 @@ namespace IsochronDrafter
         }
         public bool IsValidSet()
         {
-            if (commons.Count == 0 || uncommons.Count == 0 || rares.Count == 0 || mythicRares.Count == 0)
+            if (commons.Count < numCommonsInPack)
             {
-                serverWindow.PrintLine("ERROR: Set file must contain at least one common, one uncommon, one rare, and one mythic rare.");
+                serverWindow.PrintLine("ERROR: Set file must contain at least as many commons as there are per pack. (Contains " + commons.Count + ", needs " + numCommonsInPack + ".)");
+                return false;
+            }
+            if (uncommons.Count < numUncommonsInPack)
+            {
+                serverWindow.PrintLine("ERROR: Set file must contain at least as many uncommons as there are per pack. (Contains " + uncommons.Count + ", needs " + numUncommonsInPack + ".)");
+                return false;
+            }
+            if (rares.Count < numRaresInPack)
+            {
+                serverWindow.PrintLine("ERROR: Set file must contain at least as many rares as there are per pack. (Contains " + rares.Count + ", needs " + numRaresInPack + ".)");
+                return false;
+            }
+            if (mythicRares.Count == 0 && mythicPercentage > 0)
+            {
+                serverWindow.PrintLine("ERROR: Set file contains no mythic rares.");
                 return false;
             }
             return true;
@@ -282,7 +300,7 @@ namespace IsochronDrafter
                     draftStates[i] = new DraftState(alias);
                 }
             }
-            else if (packNumber == 4) // End the draft.
+            else if (packNumber == packs + 1) // End the draft.
             {
                 serverWindow.PrintLine("The draft has ended.");
                 TrySendMessage("DONE");
@@ -303,8 +321,8 @@ namespace IsochronDrafter
 
             // Add rares and mythic rares.
             int numRares = 0, numMythicRares = 0;
-            for (int i = 0; i < NUM_RARES_IN_PACK; i++)
-                if (Util.random.NextDouble() < .125)
+            for (int i = 0; i < numRaresInPack; i++)
+                if (Util.random.NextDouble() < mythicPercentage)
                     numMythicRares++;
                 else
                     numRares++;
@@ -315,11 +333,11 @@ namespace IsochronDrafter
             foreach (int i in rareIndexes)
                 booster.Add(rares[i]);
             // Add uncommons.
-            int[] uncommonIndexes = Util.PickN(uncommons.Count, NUM_UNCOMMONS_IN_PACK);
+            int[] uncommonIndexes = Util.PickN(uncommons.Count, numUncommonsInPack);
             foreach (int i in uncommonIndexes)
                 booster.Add(uncommons[i]);
             // Add commons.
-            int[] commonIndexes = Util.PickN(commons.Count, NUM_COMMONS_IN_PACK);
+            int[] commonIndexes = Util.PickN(commons.Count, numCommonsInPack);
             foreach (int i in commonIndexes)
                 booster.Add(commons[i]);
 

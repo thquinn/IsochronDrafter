@@ -66,19 +66,52 @@ namespace IsochronDrafter
                 MessageBox.Show("You must enter a remote image directory.");
                 return;
             }
-
+            int packs, commons, uncommons, rares;
+            float mythicPercentage;
+            if (!int.TryParse(textBox8.Text, out packs) || packs < 0)
+            {
+                MessageBox.Show("You must enter a positive integer number of packs.");
+                return;
+            }
+            if (!int.TryParse(textBox4.Text, out commons) || commons < 0)
+            {
+                MessageBox.Show("You must enter a positive integer number of commons.");
+                return;
+            }
+            if (!int.TryParse(textBox5.Text, out uncommons) || uncommons < 0)
+            {
+                MessageBox.Show("You must enter a positive integer number of uncommons.");
+                return;
+            }
+            if (!int.TryParse(textBox6.Text, out rares) || rares < 0)
+            {
+                MessageBox.Show("You must enter a positive integer number of rares.");
+                return;
+            }
+            if (!float.TryParse(textBox7.Text, out mythicPercentage) || mythicPercentage < 0 || mythicPercentage > 1)
+            {
+                MessageBox.Show("You must enter a mythic percentage between 0 and 1.");
+                return;
+            }
             Util.imageDirectory = textBox3.Text;
             if (!Util.imageDirectory.EndsWith("/"))
                 Util.imageDirectory += "/";
-            server = new DraftServer(this, textBox2.Text);
+            server = new DraftServer(this, textBox2.Text, packs, commons, uncommons, rares, mythicPercentage);
             if (server.IsValidSet())
             {
                 button1.Enabled = false;
                 button3.Enabled = false;
                 textBox2.Enabled = false;
                 textBox3.Enabled = false;
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                textBox6.Enabled = false;
+                textBox7.Enabled = false;
+                textBox8.Enabled = false;
                 server.PrintServerStartMessage();
             }
+            else
+                server.server.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
