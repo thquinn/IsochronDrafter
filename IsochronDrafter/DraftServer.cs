@@ -91,6 +91,7 @@ namespace IsochronDrafter
         public void PrintServerStartMessage()
         {
             // Get public IP address of server.
+            serverWindow.PrintLine("Looking up public IP...");
             string url = "http://checkip.dyndns.org";
             System.Net.WebRequest req = System.Net.WebRequest.Create(url);
             System.Net.WebResponse resp = req.GetResponse();

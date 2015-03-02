@@ -16,6 +16,7 @@ namespace IsochronDrafter
     public partial class DraftWindow : Form
     {
         private static Dictionary<string, Image> cardImages = new Dictionary<string, Image>();
+        private static Image blankCard = Image.FromStream(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("IsochronDrafter.blank.jpg"));
         public CardWindow cardWindow;
         public DraftClient draftClient;
         public bool canPick = true, chatBlank = true;
@@ -67,7 +68,17 @@ namespace IsochronDrafter
             if (cardImages.ContainsKey(cardName))
                 return;
             HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(Util.imageDirectory + cardName.Replace(",", "").Replace("’", "") + ".full.jpg");
-            HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            HttpWebResponse httpWebReponse;
+            try
+            {
+                httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show("Couldn't find image for card " + cardName + " at URL " + httpWebRequest.RequestUri.ToString() + ".");
+                cardImages.Add(cardName, blankCard);
+                return;
+            }
             Stream stream = httpWebReponse.GetResponseStream();
             cardImages.Add(cardName, Image.FromStream(stream));
         }
