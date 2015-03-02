@@ -16,10 +16,10 @@ namespace IsochronDrafter
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeComponent();
             MaximizeBox = false;
-            #if DEBUG
-            textBox1.Text = "isochron.us.to";
-            ActiveControl = textBox2;
-            #endif
+            textBox1.Text = isochron.Default.HostName;
+            textBox2.Text = isochron.Default.Alias;
+            if (textBox1.Text.Length > 0)
+                ActiveControl = textBox2;
         }
 
         // Connect.
@@ -35,6 +35,9 @@ namespace IsochronDrafter
                 MessageBox.Show("Your alias contains disallowed characters.");
             else
             {
+                isochron.Default.HostName = textBox1.Text;
+                isochron.Default.Alias = textBox2.Text;
+                isochron.Default.Save();
                 DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }

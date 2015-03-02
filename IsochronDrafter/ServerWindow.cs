@@ -20,10 +20,13 @@ namespace IsochronDrafter
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             InitializeComponent();
             MaximizeBox = false;
-            #if DEBUG
-            textBox2.Text = "C:\\Users\\Tom\\Desktop\\Kavanagh.txt";
-            textBox3.Text = "https://dl.dropboxusercontent.com/u/1377551/IsochronDrafter/";
-            #endif
+            textBox2.Text = isochron.Default.SetFile;
+            textBox3.Text = isochron.Default.ImageDirectory;
+            textBox8.Text = isochron.Default.Packs;
+            textBox4.Text = isochron.Default.CommonsPerPack;
+            textBox5.Text = isochron.Default.UncommonPerPack;
+            textBox6.Text = isochron.Default.RaresPerPack;
+            textBox7.Text = isochron.Default.MythicPercentage;
         }
 
         public void PrintLine(string text)
@@ -99,6 +102,14 @@ namespace IsochronDrafter
             server = new DraftServer(this, textBox2.Text, packs, commons, uncommons, rares, mythicPercentage);
             if (server.IsValidSet())
             {
+                isochron.Default.SetFile = textBox2.Text;
+                isochron.Default.ImageDirectory = textBox3.Text;
+                isochron.Default.Packs = textBox8.Text;
+                isochron.Default.CommonsPerPack = textBox4.Text;
+                isochron.Default.UncommonPerPack = textBox5.Text;
+                isochron.Default.RaresPerPack = textBox6.Text;
+                isochron.Default.MythicPercentage = textBox7.Text;
+                isochron.Default.Save();
                 button1.Enabled = false;
                 button3.Enabled = false;
                 textBox2.Enabled = false;

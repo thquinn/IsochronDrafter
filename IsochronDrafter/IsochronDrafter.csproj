@@ -81,6 +81,11 @@
     </Compile>
     <Compile Include="EventDrivenTCPClient.cs" />
     <Compile Include="FlashWindow.cs" />
+    <Compile Include="isochron.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>isochron.settings</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerWindow.cs">
@@ -117,6 +122,11 @@
     <EmbeddedResource Include="ServerWindow.resx">
       <DependentUpon>ServerWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="isochron.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>isochron.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
